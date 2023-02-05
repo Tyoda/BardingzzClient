@@ -1,0 +1,46 @@
+
+plugins {
+    id 'idea'
+    id 'java'
+}
+
+group 'org.tyoda.wurm.bardingzzclient'
+version '1.0'
+
+repositories {
+    mavenCentral()
+    maven { url "https://gotti.no-ip.org/maven/repository" }
+    maven { url 'https://jitpack.io' }
+}
+
+var commonJar = files("/media/tyoda/Files/w/p/wurmmods/libraries/common.jar")
+var clientJar = files("/media/tyoda/Files/w/p/wurmmods/libraries/client/client-patched.jar")
+
+dependencies {
+    if(clientJar){
+        implementation(clientJar)
+    }else{
+        implementation 'org.gotti.wurmunlimited:client:3721782'
+    }
+    if(commonJar){
+        implementation(commonJar)
+    }else{
+        implementation 'org.gotti.wurmunlimited:common-client:3721782'
+    }
+
+    implementation 'org.gotti.wurmunlimited:client-modlauncher:0.14'
+}
+
+jar {
+    archiveFileName = "${project.name}.jar"
+}
+
+task dist(type: Zip) {
+    into("mods", {
+        into(project.name, {
+            from jar
+        })
+        from fileTree(dir: 'mods', include: '*')
+    })
+    archiveFileName = "${project.name}-${project.version}.zip"
+}
