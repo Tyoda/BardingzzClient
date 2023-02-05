@@ -27,8 +27,8 @@ except with `.riding` instead of `.cotton` (or leather/iron) at the end, and onl
 So for the same item in my mod it will read:
 `mod.bardingzz.tyoda.bardings.smiley.riding = smiley.dds`
 
-**Note that even though you map to `.cotton`, in the ItemTemplateBuilder you should not include that,
-only up to `...smiley.` (including the fot at the end)**
+**Note that even though you map to `.cotton` in the mappings.txt, in the ItemTemplateBuilder you should not include that,
+only up to `...smiley.` (including the dot at the end)**
 
-**Also note that the only materials you should use for the barding are cotton, leather, and any vanilla metal.
+**Also note that the only materials you should use for the barding in the ItemTemplateBuilder are cotton, leather, and any vanilla metal.
 This is required so as not to cause issues for unmodded clients.**
